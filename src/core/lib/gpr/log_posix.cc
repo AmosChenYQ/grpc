@@ -31,7 +31,7 @@
 #include <string.h>
 #include <time.h>
 
-static intptr_t gettid(void) { return (intptr_t)pthread_self(); }
+static intptr_t grpc_gettid(void) { return (intptr_t)pthread_self(); }
 
 void gpr_log(const char* file, int line, gpr_log_severity severity,
              const char* format, ...) {

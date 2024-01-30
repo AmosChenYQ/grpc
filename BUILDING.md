@@ -117,6 +117,19 @@ From the grpc repository root
 
 See [Installing Bazel](https://docs.bazel.build/versions/master/install.html) for instructions how to install bazel on your system.
 
+Download third party [upb](https://github.com/protocolbuffers/upb/archive/423ea5ca9ce8da69611e6e95559efcb3a1ba8ad8.tar.gz) into local folder, then modify its BUILD file in its root:
+
+```diff
+COPTS = CPPOPTS + [
+    # copybara:strip_for_google3_begin
+    "-pedantic",
+-    "-std=c89",
+    "-Wstrict-prototypes",
+    # copybara:strip_end
+]
+```
+
+
 From the grpc repository root
 ```
 $ bazel build :all

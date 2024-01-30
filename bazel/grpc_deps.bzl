@@ -2,6 +2,7 @@
 
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load(":local_repo_deps.bzl", "local_repository")
 
 def grpc_deps():
     """Loads dependencies need to compile and test the grpc library."""
@@ -204,11 +205,16 @@ def grpc_deps():
             url = "https://github.com/census-instrumentation/opencensus-cpp/archive/c9a4da319bc669a772928ffc55af4a61be1a1176.tar.gz",
         )
     if "upb" not in native.existing_rules():
-        http_archive(
+        # http_archive(
+        #     name = "upb",
+        #     sha256 = "73deded75313f80779eba109c32f3c59a813addf5064bf6e7c213fca1e7d8e32",
+        #     strip_prefix = "upb-423ea5ca9ce8da69611e6e95559efcb3a1ba8ad8",
+        #     url = "https://github.com/protocolbuffers/upb/archive/423ea5ca9ce8da69611e6e95559efcb3a1ba8ad8.tar.gz",
+        # )
+        # Use local repo because this is hard to download
+        local_repository(
             name = "upb",
-            sha256 = "73deded75313f80779eba109c32f3c59a813addf5064bf6e7c213fca1e7d8e32",
-            strip_prefix = "upb-423ea5ca9ce8da69611e6e95559efcb3a1ba8ad8",
-            url = "https://github.com/protocolbuffers/upb/archive/423ea5ca9ce8da69611e6e95559efcb3a1ba8ad8.tar.gz",
+            path = "/root/scripts/upb"
         )
     if "envoy_api" not in native.existing_rules():
         http_archive(

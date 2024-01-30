@@ -1102,7 +1102,7 @@ static void end_worker(grpc_pollset* pollset, grpc_pollset_worker* worker,
 }
 
 #ifndef NDEBUG
-static long gettid(void) { return syscall(__NR_gettid); }
+// static long grpc_gettid(void) { return syscall(__NR_gettid); }
 #endif
 
 /* pollset->mu lock must be held by the caller before calling this.

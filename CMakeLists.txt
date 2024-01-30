@@ -13523,6 +13523,8 @@ add_executable(grpc_cpp_plugin
 )
 
 
+message(WARNING "_gRPC_SSL_INCLUDE_DIR is " ${_gRPC_SSL_INCLUDE_DIR})
+
 target_include_directories(grpc_cpp_plugin
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include
